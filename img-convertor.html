@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProImage Converter | Convert Images to PDF, WebP, PNG, JPG Online</title>
+    <meta name="description" content="Professional online image converter with advanced compression. Convert images to PDF, WebP, PNG, JPG formats instantly. Free web optimization tool with quality control.">
+    <meta name="keywords" content="image converter, PDF converter, WebP converter, image optimizer, online image tools">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_AD_CLIENT_ID" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #60a5fa;
+            --background: #f8fafc;
+            --text: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .upload-section {
+            border: 2px dashed var(--accent);
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .format-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .format-btn {
+            background: #f0f4ff;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .format-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .preview-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .preview-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .ad-unit {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            min-height: 250px;
+        }
+
+        .process-btn {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .upload-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google AdSense Header Ad -->
+    <div class="ad-unit">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_AD_CLIENT_ID"
+             data-ad-slot="HEADER_AD_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+
+    <header class="header">
+        <h1>ProImage Converter</h1>
+        <p>Convert & Optimize Images with Professional Quality</p>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <div class="upload-section" id="dropZone" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
+                <i class="fas fa-cloud-upload-alt fa-3x"></i>
+                <h2>Drag & Drop or Click to Upload</h2>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+                <button onclick="document.getElementById('fileInput').click()" class="process-btn" style="margin-top: 1rem;">
+                    <i class="fas fa-folder-open"></i> Choose Image
+                </button>
+            </div>
+
+            <div class="controls-grid">
+                <div class="control-group">
+                    <h3>Output Format</h3>
+                    <div class="format-grid">
+                        <div class="format-btn" data-format="jpg">JPG</div>
+                        <div class="format-btn" data-format="png">PNG</div>
+                        <div class="format-btn" data-format="webp">WebP</div>
+                        <div class="format-btn" data-format="pdf">PDF</div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Compression Quality</h3>
+                    <input type="range" id="quality" min="1" max="100" value="80">
+                    <div class="quality-display">
+                        <span id="qualityValue">80</span>% Quality
+                    </div>
+                </div>
+            </div>
+
+            <button class="process-btn" onclick="startConversion()">
+                <i class="fas fa-cogs"></i> Process Conversion
+            </button>
+
+            <div class="preview-container">
+                <div class="preview-card">
+                    <h3><i class="fas fa-image"></i> Original File</h3>
+                    <div class="preview-content" id="originalPreview"></div>
+                    <div class="file-info" id="originalInfo"></div>
+                </div>
+                <div class="preview-card">
+                    <h3><i class="fas fa-file-export"></i> Converted File</h3>
+                    <div class="preview-content" id="convertedPreview"></div>
+                    <a id="downloadLink" download class="process-btn" style="display: none; margin-top: 1rem;">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Ad Sidebar -->
+        <aside>
+            <div class="ad-unit">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_AD_CLIENT_ID"
+                     data-ad-slot="SIDEBAR_AD_SLOT"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+
+        let selectedFormat = 'jpg';
+        let currentFile = null;
+        const formatButtons = document.querySelectorAll('.format-btn');
+        const qualitySlider = document.getElementById('quality');
+        const qualityValue = document.getElementById('qualityValue');
+
+        // Initialize format selection
+        formatButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                formatButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedFormat = btn.dataset.format;
+            });
+        });
+
+        // Handle quality slider
+        qualitySlider.addEventListener('input', (e) => {
+            qualityValue.textContent = e.target.value;
+        });
+
+        // Handle file selection
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            currentFile = e.target.files[0];
+            showPreview(currentFile);
+        });
+
+        // Drag and drop handlers
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.dataTransfer.dropEffect = 'copy';
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            currentFile = e.dataTransfer.files[0];
+            showPreview(currentFile);
+        }
+
+        // Show file preview
+        function showPreview(file) {
+            const preview = document.getElementById('originalPreview');
+            preview.innerHTML = '';
+
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = '100%';
+                    preview.appendChild(img);
+                    
+                    document.getElementById('originalInfo').textContent = 
+                        `${file.name} | ${(file.size/1024).toFixed(1)}KB`;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Main conversion function
+        async function startConversion() {
+            if (!currentFile) return alert('Please select an image first!');
+            
+            const quality = qualitySlider.value / 100;
+            const img = await loadImage(currentFile);
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+
+            if (selectedFormat === 'pdf') {
+                const pdf = new jspdf.jsPDF();
+                const imgData = canvas.toDataURL('image/jpeg', quality);
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = (img.height * pdfWidth) / img.width;
+                
+                pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+                const pdfBlob = pdf.output('blob');
+                showResult(pdfBlob, 'pdf');
+            } else {
+                const mimeType = {
+                    jpg: 'image/jpeg',
+                    png: 'image/png',
+                    webp: 'image/webp'
+                }[selectedFormat];
+
+                canvas.toBlob(blob => {
+                    showResult(blob, selectedFormat);
+                }, mimeType, quality);
+            }
+        }
+
+        // Handle conversion result
+        function showResult(blob, format) {
+            const url = URL.createObjectURL(blob);
+            const preview = document.getElementById('convertedPreview');
+            preview.innerHTML = format === 'pdf' ? 
+                '<i class="fas fa-file-pdf fa-3x"></i><p>PDF Document Ready</p>' :
+                `<img src="${url}" style="max-width:100%">`;
+
+            const downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = url;
+            downloadLink.download = `converted.${format}`;
+            downloadLink.style.display = 'flex';
+        }
+
+        // Helper function to load image
+        function loadImage(file) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.src = URL.createObjectURL(file);
+                img.onload = () => resolve(img);
+            });
+        }
+
+        // Initialize first format button
+        formatButtons[0].click();
+    </script>
+</body>
+</html>
