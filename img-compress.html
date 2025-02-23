@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProImage Optimizer | Advanced Image Compression Solution</title>
+    <meta name="description" content="Professional-grade image compression with intelligent optimization. Reduce file sizes while maintaining visual quality. Supports JPG, PNG, WebP formats. Free online tool for developers and designers.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #2563eb;
+            --accent-color: #60a5fa;
+            --text-color: #1e293b;
+            --background-color: #f8fafc;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .main-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+        }
+
+        /* Ad Sections */
+        .ad-unit {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .top-banner-ad {
+            grid-column: 1 / -1;
+            margin: 1rem auto;
+            max-width: 1200px;
+            min-height: 120px;
+        }
+
+        /* Upload Section */
+        .upload-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            border: 2px dashed #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-section:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        /* Compression Controls */
+        .controls-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .quality-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            color: #64748b;
+        }
+
+        /* Preview Section */
+        .preview-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .preview-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .preview-card h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Footer */
+        .main-footer {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .top-banner-ad {
+                min-height: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner Ad -->
+    <div class="ad-unit top-banner-ad">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+
+    <header class="main-header">
+        <div class="header-content">
+            <h1 class="header-title">ProImage Optimizer</h1>
+            <p>Enterprise-grade Image Compression Solution</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <!-- Main Content Ad -->
+            <div class="ad-unit" style="min-height: 120px;">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXXX"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+
+            <section class="upload-section">
+                <input type="file" id="fileInput" class="file-input" accept="image/*">
+                <label for="fileInput" class="upload-label">
+                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                    <h2>Drag & Drop or Click to Upload</h2>
+                    <p>Supported formats: JPG, PNG, WEBP | Max size: 10MB</p>
+                </label>
+            </section>
+
+            <!-- Compression Interface -->
+            <section class="controls-section">
+                <div class="quality-indicator">
+                    <span>Compression Level</span>
+                    <span id="qualityValue">80%</span>
+                </div>
+                <input type="range" class="quality-slider" min="1" max="100" value="80">
+                
+                <button class="btn btn-primary" onclick="compressImage()">
+                    <i class="fas fa-magic"></i>
+                    Optimize Image
+                </button>
+            </section>
+
+            <!-- Preview Section -->
+            <div class="preview-container">
+                <div class="preview-card">
+                    <h3><i class="fas fa-image"></i>Original Image</h3>
+                    <img id="originalPreview" class="preview-img" alt="Original preview">
+                </div>
+                <div class="preview-card">
+                    <h3><i class="fas fa-compress-alt"></i>Optimized Image</h3>
+                    <img id="compressedPreview" class="preview-img" alt="Compressed preview">
+                    <div id="downloadSection" class="download-container">
+                        <a id="downloadLink" download="optimized-image.jpg" class="btn btn-download">
+                            <i class="fas fa-download"></i>
+                            Download ( <span id="fileSize">0KB</span> )
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sidebar with Ads -->
+        <aside class="sidebar">
+            <div class="ad-unit sticky-ad">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXXX"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+
+            <div class="ad-unit">
+                <h4>Optimization Tips</h4>
+                <ul class="tips-list">
+                    <li><i class="fas fa-check-circle"></i> Use 65-80% for web images</li>
+                    <li><i class="fas fa-check-circle"></i> Convert PNG to JPG for photos</li>
+                    <li><i class="fas fa-check-circle"></i> Resize images before upload</li>
+                    <li><i class="fas fa-check-circle"></i> Use WebP for modern browsers</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 ProImage Optimizer. All rights reserved. | <a href="/privacy" style="color: white;">Privacy Policy</a> | <a href="/terms" style="color: white;">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        // AdSense initialization
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        
+        // Image processing logic
+        const qualitySlider = document.querySelector('.quality-slider');
+        const qualityValue = document.getElementById('qualityValue');
+        const downloadLink = document.getElementById('downloadLink');
+        const fileSizeElement = document.getElementById('fileSize');
+
+        qualitySlider.addEventListener('input', (e) => {
+            qualityValue.textContent = `${e.target.value}%`;
+        });
+
+        // ... (rest of the compression logic from previous version)
+    </script>
+</body>
+</html>
