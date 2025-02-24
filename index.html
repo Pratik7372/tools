@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="CoolToolKit - Your ultimate online toolkit for PDF tools, image compression, and file conversions. Fast, free, and easy-to-use.">
-    <meta name="keywords" content="CoolToolKit, PDF tools, image compressor, PDF merger, split PDF, compress PDF, PDF to image, word to PDF, PDF to PPT, PDF to Excel, online tools">
+    <meta name="keywords" content="CoolToolKit, PDF tools, image compressor, PDF merger, split PDF, compress PDF, PDF to image, word to PDF, PDF to PPT, PDF to Excel, PPT to PDF, edit PDF, sign PDF, HTML to PDF, organize PDF, online tools">
     <meta name="author" content="CoolToolKit Team">
     <meta name="robots" content="index, follow">
     <title>CoolToolKit - Ultimate Online Toolkit</title>
@@ -22,6 +22,7 @@
             line-height: 1.6;
             color: #333;
             background-color: #f9f9f9;
+            overflow-x: hidden;
         }
 
         /* Navbar */
@@ -220,6 +221,28 @@
             .hero h1 {
                 font-size: 2rem;
             }
+
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .tools-section h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -304,6 +327,31 @@
                 <h3><a href="https://example.com/pdf-to-excel" target="_blank">PDF to Excel</a></h3>
                 <p>Convert PDFs to editable Excel files.</p>
             </div>
+            <div class="tool-card">
+                <img src="https://via.placeholder.com/250x150" alt="PPT to PDF">
+                <h3><a href="https://example.com/ppt-to-pdf" target="_blank">PPT to PDF</a></h3>
+                <p>Convert PowerPoint presentations to PDF.</p>
+            </div>
+            <div class="tool-card">
+                <img src="https://via.placeholder.com/250x150" alt="Edit PDF">
+                <h3><a href="https://example.com/edit-pdf" target="_blank">Edit PDF</a></h3>
+                <p>Modify text and images in PDFs easily.</p>
+            </div>
+            <div class="tool-card">
+                <img src="https://via.placeholder.com/250x150" alt="Sign PDF">
+                <h3><a href="https://example.com/sign-pdf" target="_blank">Sign PDF</a></h3>
+                <p>Add digital signatures to your PDFs.</p>
+            </div>
+            <div class="tool-card">
+                <img src="https://via.placeholder.com/250x150" alt="HTML to PDF">
+                <h3><a href="https://example.com/html-to-pdf" target="_blank">HTML to PDF</a></h3>
+                <p>Convert HTML pages to PDF documents.</p>
+            </div>
+            <div class="tool-card">
+                <img src="https://via.placeholder.com/250x150" alt="Organize PDF">
+                <h3><a href="https://example.com/organize-pdf" target="_blank">Organize PDF</a></h3>
+                <p>Rearrange, delete, or rotate PDF pages.</p>
+            </div>
         </div>
     </section>
 
@@ -327,7 +375,7 @@
 
     <section id="contact" class="contact-section">
         <h2>Contact Us</h2>
-        <form>
+        <form id="contact-form">
             <input type="text" placeholder="Name" required>
             <input type="email" placeholder="Email" required>
             <textarea placeholder="Message" required></textarea>
@@ -350,13 +398,23 @@
         });
 
         // Smooth Scroll for Navigation
-        document.querySelectorAll('.nav-links a').forEach(anchor => {
+        document.querySelectorAll('.nav-links a, .cta-button').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 target.scrollIntoView({ behavior: 'smooth' });
-                navLinks.classList.remove('active'); // Close menu on click
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
             });
+        });
+
+        // Basic Contact Form Submission Handling
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We’ll get back to you soon.');
+            contactForm.reset();
         });
     </script>
 </body>
